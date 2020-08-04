@@ -1,6 +1,5 @@
-FROM openjdk:8
-MAINTAINER Chennakesava C
-ADD target/*.jar easybuggy.jar
-ENTRYPOINT ["java", "-jar", "easybuggy.jar"]
-EXPOSE 7079
+FROM tomcat:8-jre8
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY ./Hospital-Management-Systemtarget/*.war /usr/local/tomcat/webapps/ROOT.war
+EXPOSE 7373
 CMD ["catalina.sh", "run"]
